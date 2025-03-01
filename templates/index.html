@@ -1,0 +1,88 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio/Video Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="file"] {
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload Audio or Video File</h2>
+        <input type="file" id="fileInput" accept="audio/*,video/*">
+        <button onclick="uploadFile()">Upload</button>
+        <div class="output" id="output"></div>
+    </div>
+
+    <script>
+        function uploadFile() {
+            let fileInput = document.getElementById('fileInput');
+            let file = fileInput.files[0];
+            if (!file) {
+                alert('Please select a file.');
+                return;
+            }
+            
+            let formData = new FormData();
+            formData.append('file', file);
+            
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('output').innerHTML = `
+                    <h3>Transcript:</h3>
+                    <p>${data.transcript}</p>
+                    <h3>Summary:</h3>
+                    <p>${data.summary}</p>
+                    <h3>Waveform:</h3>
+                    <img src="${data.waveform}" alt="Waveform">
+                `;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speech Summarization</title>
+</head>
+<body>
+    <h2>Welcome to the Speech Summarization API!</h2>
+    <a href="{{ url_for('login') }}">Login</a> |
+    <a href="{{ url_for('register') }}">Register</a>
+</body>
+</html>
